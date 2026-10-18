@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For mon cherie ♡</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #fff0f5;
+      font-family: Georgia, serif;
+      background:
+        radial-gradient(ellipse at top, #51264f 0%, transparent 55%),
+        linear-gradient(160deg, #100d25, #28142f 60%, #100d25);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 65px 20px;
+      max-width: 680px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 10vw, 4.5rem);
+      font-weight: normal;
+      margin: 18px 0;
+    }
+
+    h2 { font-weight: normal; color: #ffd1e1; }
+
+    p {
+      line-height: 1.8;
+      color: #f3dce9;
+    }
+
+    .eyebrow {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: .72rem;
+      color: #eab5d0;
+    }
+
+    .heart {
+      font-size: 3rem;
+      color: #ff9fc5;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% { transform: scale(1.18); }
+    }
+
+    .card {
+      background: #ffffff0c;
+      border: 1px solid #ffc3df35;
+      border-radius: 22px;
+      padding: 26px 22px;
+      margin: 24px 0;
+      backdrop-filter: blur(8px);
+    }
+
+    button {
+      border: 1px solid #ffd1e1;
+      background: #f3b5d0;
+      color: #32152d;
+      border-radius: 30px;
+      padding: 13px 21px;
+      margin: 7px 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    button:hover { background: #ffe1ed; }
+
+    .secondary {
+      background: transparent;
+      color: #ffe2ef;
+    }
+
+    .hidden { display: none; }
+
+    #letter {
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    .secret {
+      color: #ffcae0;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      cursor: pointer;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      border: 1px solid #d8a7c5;
+      background: #21142d;
+      color: white;
+      font-size: 1rem;
+      margin: 12px 0;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      color: #ffe5f2;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: .2; }
+      to { opacity: .95; }
+    }
+
+    .float-heart {
+      position: fixed;
+      bottom: -30px;
+      pointer-events: none;
+      animation: rise 3s ease-out forwards;
+      z-index: 5;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      padding: 30px;
+      color: #caa8c3;
+      font-size: .85rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="stars" aria-hidden="true"></div>
+
+  <section id="home">
+    <p class="eyebrow">a little something, just for you</p>
+    <div class="heart">♡</div>
+    <h1>Mon cherie</h1>
+    <p>
+      In a world full of ordinary things,<br>
+      you are one of my favourite surprises.
+    </p>
+    <button onclick="openLetter()">Open your little universe ✨</button>
+    <p><small>Made with a little courage and a lot of love.</small></p>
+  </section>
+
+  <section id="letterSection" class="hidden">
+    <p class="eyebrow">chapter i · a letter for you</p>
+    <h2>Things I wish I could say...</h2>
+
+    <div class="card">
+      <p id="letter"></p>
+    </div>
+
+    <button onclick="showSecrets()">There's more ♡</button>
+  </section>
+
+  <section id="secrets" class="hidden">
+    <p class="eyebrow">chapter ii · little secrets</p>
+    <h2>A few things you should know</h2>
+
+    <div class="card">
+      <p>One thing I secretly adore about you:</p>
+      <p class="secret" onclick="reveal('s1')">Tap to discover ♡</p>
+      <p id="s1" class="hidden">
+        The way you make even the smallest moments feel special.
+      </p>
+    </div>
+
+    <div class="card">
+      <p>One little confession:</p>
+      <p class="secret" onclick="reveal('s2')">I'm not sure you know this...</p>
+      <p id="s2" class="hidden">
+        You cross my mind more often than I admit [24/7 non stop]
+        [u def shouldnt be running around that much on my mind ull lose weight].
+      </p>
+    </div>
+
+    <div class="card">
+      <p>And one wish for you:</p>
+      <p class="secret" onclick="reveal('s3')">One last secret ✨</p>
+      <p id="s3" class="hidden">
+        May life give you a thousand reasons to smile 
+        n wishing i am atleast 99%[my greedy ahh]of it .
+      </p>
+    </div>
+
+    <button onclick="showQuiz()">One tiny challenge →</button>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <p class="eyebrow">chapter iii · a very important test</p>
+    <h2>How well do you know your admirer? ♡</h2>
+    <p id="question">What is your favourite thing about me?</p>
+
+    <div class="card" id="answers">
+      <button onclick="answer('A')">My smile</button>
+      <button onclick="answer('B')">My personality</button>
+      <button onclick="answer('C')">Everything, obviously</button>
+    </div>
+    <p id="quizFeedback" aria-live="polite"></p>
+    <button id="nextQuestion" class="hidden" onclick="nextQuestion()">
+      Next question →
+    </button>
+  </section>
+
+  <section id="final" class="hidden">
+    <div class="heart">♥</div>
+    <p class="eyebrow">the last little page</p>
+    <h2>Happy Birthday, mon cherie</h2>
+    <p>
+      I hope this new chapter of your life is gentle with you,
+      full of unexpected happiness, and sprinkled with lots ofmagic.
+    </p>
+    <div class="card">
+      <h2>One last thing...</h2>
+      <p>Some people make the world brighter simply by being in it.</p>
+      <p>For me, you're one of those people. ♡</p>
+    </div>
+    <button onclick="celebrate()">Make a little wish ✨</button>
+    <p id="wish" class="hidden">May something beautiful find you this year. ♡</p>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>What my heart sounds like when i see u  ♫</h2>
+      <p>hence lowk new ringotone bro</p>
+      <audio id="music" controls loop preload="none">
+        <source src="Snehithane instrumental cover.mp3" type="audio/mpeg">
+    
+      </audio>
+     
+    </div>
+  </section>
+
+  <footer>Love u lots n wishing you the best. ♡</footer>
+
+  <script>
+    // EDIT THIS LETTER TO MAKE IT YOURS
+    const letterText = `Deer mon cherie✦,
+
+I don't know if words will ever be enough to explain
+how special you are to me.
+
+These vast waves of emotions i feel towrds 
+its unexplainable wish i could let u into my mind.
+
+To see u through my eyes a blessing 
+and to have u in my life a boon.
+
+The sorrow of our distance might be present
+but my love for u overwhelms it easily.
+
+You r the most beautiful person ik, ur soul is radiant 
+<she doth teaches the torches to burn brighter indeed>
+
+And no matter how aprt we will be 
+this idiot will always be longing for you mwah<33
+
+There's something about you that makes ordinary
+Life feel a little more magical.
+
+I hope you never forget how much you deserve
+to be loved, appreciated, and celebrated.
+
+And maybe, just maybe, this little website
+will make you smile today.
+
+ 
+Happiest Birthday, mon cherie. ♡
+ (mon cherie cuz i cherish u a lot hehe)
+with love from ur dumbo1✨`;
+
+    // PERSONALISE THE QUIZ ANSWERS HERE
+    const quizQuestions = [
+      {
+        question: "What is your favourite thing about me?",
+        options: ["My smile", "My personality", "Everything, obviously"],
+        correct: 2,
+        feedback: "Excellent taste. I knew it. ♡"
+      },
+      {
+        question: "What do you deserve this birthday?",
+        options: ["A peaceful year", "Endless happiness", "All the love in the world"],
+        correct: 2,
+        feedback: "Correct. And then some. ✨"
+      },
+      {
+        question: "What is the most important rule here?",
+        options: ["Keep smiling", "Accept birthday wishes", "Let yourself be celebrated"],
+        correct: 0,
+        feedback: "All of these, actually. Your smile is precious. ♡"
+      }
+    ];
+
+    let questionIndex = 0;
+
+    // Make a gentle starry sky
+    const stars = document.getElementById("stars");
+    for (let i = 0; i < 65; i++) {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.textContent = "✦";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.fontSize = (Math.random() * 8 + 4) + "px";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      stars.appendChild(star);
+    }
+
+    function openLetter() {
+      document.getElementById("letterSection").classList.remove("hidden");
+      document.getElementById("letter").textContent = letterText;
+      document.getElementById("letterSection").scrollIntoView({behavior:"smooth"});
+    }
+
+    function showSecrets() {
+      document.getElementById("secrets").classList.remove("hidden");
+      document.getElementById("secrets").scrollIntoView({behavior:"smooth"});
+    }
+
+    function reveal(id) {
+      document.getElementById(id).classList.remove("hidden");
+      celebrateHearts(5);
+    }
+
+    function showQuiz() {
+      document.getElementById("quiz").classList.remove("hidden");
+      renderQuestion();
+      document.getElementById("quiz").scrollIntoView({behavior:"smooth"});
+    }
+
+    function renderQuestion() {
+      const q = quizQuestions[questionIndex];
+      document.getElementById("question").textContent =
+        (questionIndex + 1) + ". " + q.question;
+
+      const answers = document.getElementById("answers");
+      answers.replaceChildren();
+
+      q.options.forEach((option, i) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => answer(i);
+        answers.appendChild(button);
+      });
+
+      document.getElementById("quizFeedback").textContent = "";
+      document.getElementById("nextQuestion").classList.add("hidden");
+    }
+
+    function answer(choice) {
+      const q = quizQuestions[questionIndex];
+      document.getElementById("quizFeedback").textContent =
+        q.feedback;
+      document.querySelectorAll("#answers button").forEach(b => {
+        b.disabled = true;
+      });
+      document.getElementById("nextQuestion").classList.remove("hidden");
+      celebrateHearts(8);
+    }
+
+    function nextQuestion() {
+      questionIndex++;
+      if (questionIndex < quizQuestions.length) {
+        renderQuestion();
+      } else {
+        document.getElementById("final").classList.remove("hidden");
+        document.getElementById("final").scrollIntoView({behavior:"smooth"});
+      }
+    }
+
+    function celebrateHearts(count) {
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("span");
+        heart.className = "float-heart";
+        heart.textContent = ["♡", "♥", "✦"][i % 3];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3200);
+      }
+    }
+
+    function celebrate() {
+      document.getElementById("wish").classList.remove("hidden");
+      celebrateHearts(30);
+    }
+  </script>
+</body>
+</html>
